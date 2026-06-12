@@ -1,0 +1,38 @@
+# Secrets and browser identity
+*cookie*.txt
+*cookies*.json
+chrome-*profile/
+browser-profile/
+user-data-dir/
+storage-state*.json
+
+# Generated media and transcripts
+videos/
+audio/
+transcripts/
+downloads/
+*.mp4
+*.m4a
+*.mp3
+*.wav
+*.srt
+*.vtt
+
+# Runtime artifacts
+node_modules/
+.venv/
+__pycache__/
+*.log
+*.err
+*.tmp
+*.part
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Local manifests that may contain private URLs
+manifest*.json
+run-status*.json
+network/
+captures/

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Social Video Distill"
+  short_description: "Distill authorized social videos"
+  default_prompt: "Use $social-video-distill to distill authorized social videos into transcripts, review notes, and an inbox-ready material card."
+policy:
+  allow_implicit_invocation: true

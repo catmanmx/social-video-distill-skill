@@ -1,0 +1,13 @@
+{
+  "name": "social-video-distill-skill",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "check": "node --check skills/social-video-distill/scripts/visible_login_wait.js && node --check skills/social-video-distill/scripts/collect_visible_links.js"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}
