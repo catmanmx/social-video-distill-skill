@@ -33,6 +33,9 @@ __pycache__/
 
 # Local manifests that may contain private URLs
 manifest*.json
+new-items-manifest*.json
+track_state*.json
+run-update-check*.json
 run-status*.json
 network/
 captures/

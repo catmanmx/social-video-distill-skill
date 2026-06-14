@@ -12,6 +12,7 @@ This repository packages a reusable workflow, not a scraping bypass. It is inten
 - Extracts audio with `ffmpeg`.
 - Transcribes audio with `faster-whisper`.
 - Verifies output counts.
+- Tracks authorized accounts and processes only newly discovered items.
 - Generates a review/inbox material card for later knowledge-base cleanup.
 
 ## Safety Boundaries
@@ -33,6 +34,12 @@ Then start a new Codex session and ask:
 
 ```text
 Use $social-video-distill to distill this authorized video account into transcripts and an inbox card.
+```
+
+For update tracking:
+
+```text
+Use $social-video-distill to check this authorized account for new videos and process only the new items.
 ```
 
 ## Requirements

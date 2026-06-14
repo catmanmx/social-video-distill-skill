@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "check": "node --check skills/social-video-distill/scripts/visible_login_wait.js && node --check skills/social-video-distill/scripts/collect_visible_links.js"
+    "check": "node --check skills/social-video-distill/scripts/visible_login_wait.js && node --check skills/social-video-distill/scripts/collect_visible_links.js && node --check skills/social-video-distill/scripts/track_check_updates.js && node --check skills/social-video-distill/scripts/track_ingest_new_items.js"
   },
   "dependencies": {
     "playwright": "^1.60.0"

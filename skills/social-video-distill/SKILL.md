@@ -1,6 +1,6 @@
 ---
 name: social-video-distill
-description: Distill authorized social-video accounts or local video collections into downloaded media, audio, transcripts, content-review notes, and inbox-ready Markdown material cards. Use when the user asks to process short-form/social videos, extract video lists, transcribe posts, review scripts for logic or factual risk, or save distilled content into a knowledge inbox. Only use for content the user owns, is authorized to process, or can access under platform rules; do not bypass CAPTCHA, paywalls, access controls, anti-bot controls, or platform restrictions.
+description: Distill and track authorized social-video accounts or local video collections into downloaded media, audio, transcripts, content-review notes, and inbox-ready Markdown material cards. Use when the user asks to process short-form/social videos, extract video lists, transcribe posts, follow/track account updates, process only newly published items, review scripts for logic or factual risk, or save distilled content into a knowledge inbox. Only use for content the user owns, is authorized to process, or can access under platform rules; do not bypass CAPTCHA, paywalls, access controls, anti-bot controls, or platform restrictions.
 ---
 
 # Social Video Distill
@@ -57,14 +57,30 @@ Process only authorized content. Keep login visible and user-driven. Never print
    - for knowledge-base capture, read `references/inbox-capture.md`
    - generate an inbox card with claims, risks, reusable ideas, and next actions
 
+## Tracking Workflow
+
+Use tracking when the user asks to follow an account, check for updates, process only new posts, or "追更".
+
+1. Read `references/tracking.md`.
+2. Run `scripts/track_check_updates.js` with a state file and account URL.
+3. Treat results conservatively:
+   - `has_new_items`: process the generated new-items manifest.
+   - `no_new_items`: report no new content.
+   - `check_failed` or `possibly_incomplete`: do not say there are no updates; explain why the check is unreliable.
+4. Download and transcribe only the new-items manifest.
+5. After successful processing, run `scripts/track_ingest_new_items.js --commit` to merge new items into `manifest.json` and `track_state.json`.
+
 ## Scripts
 
 - `scripts/visible_login_wait.js`: open a visible Playwright Chrome session and optionally export cookies for allowed domains without printing values.
 - `scripts/collect_visible_links.js`: collect visible links from a page into a manifest.
 - `scripts/download_with_ytdlp.py`: download authorized URLs from a manifest using `yt-dlp` or `uvx yt-dlp`.
+- `scripts/download_direct_media.py`: download authorized direct media URLs from manifest fields such as `direct_url` or `best_url`.
 - `scripts/transcribe_media.py`: extract audio and create Markdown transcripts.
 - `scripts/verify_outputs.py`: verify expected output counts.
 - `scripts/make_inbox_card.py`: create an inbox-ready Markdown review card from transcripts.
+- `scripts/track_check_updates.js`: check an authorized account page for newly visible/captured items against `track_state.json`.
+- `scripts/track_ingest_new_items.js`: write a new-items manifest and optionally commit processed items into `manifest.json` and `track_state.json`.
 
 ## Review Defaults
 
